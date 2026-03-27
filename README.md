@@ -1,4 +1,4 @@
-<img width="1920" height="860" alt="Screenshot (833)" src="https://github.com/user-attachments/assets/75bf2969-8afe-4486-a49a-3d8c349da35b" /># PrestaShop Deployment on AWS — Full Documentation
+# PrestaShop Deployment on AWS — Full Documentation
 
 ## Project Overview
 
