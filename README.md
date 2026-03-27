@@ -1,4 +1,4 @@
-# PrestaShop Deployment on AWS — Full Documentation
+<img width="1920" height="860" alt="Screenshot (833)" src="https://github.com/user-attachments/assets/75bf2969-8afe-4486-a49a-3d8c349da35b" /># PrestaShop Deployment on AWS — Full Documentation
 
 ## Project Overview
 
@@ -48,7 +48,8 @@ Create a new Security Group with the following **Inbound Rules:**
 |---|---|---|---|
 | SSH | TCP | 22 | My IP |
 | HTTP | TCP | 80 | 0.0.0.0/0 |
-| HTTPS | TCP | 443 | 0.0.0.0/0 |
+
+<img width="1920" height="869" alt="Screenshot (831)" src="https://github.com/user-attachments/assets/23b2ca62-64a5-49e0-be6f-ad12f3208741" />
 
 - Click **Launch Instance**
 - Wait for the Instance State to show **Running**
@@ -75,6 +76,10 @@ Create a new Security Group with the following **Inbound Rules:**
 | Storage | 20 GB gp2 |
 | Public access | No |
 
+<img width="1920" height="875" alt="Screenshot (832)" src="https://github.com/user-attachments/assets/5dfbc204-1a8e-4f51-89a1-12aedf7be367" />
+
+<img width="1920" height="860" alt="Screenshot (833)" src="https://github.com/user-attachments/assets/e4129855-f5e7-44b6-8cc4-4a41e4515c8e" />
+
 ### 2.3 Configure Security Group for RDS
 - Create or assign a Security Group for the RDS instance
 - Add an **Inbound Rule:**
@@ -96,7 +101,7 @@ On your local machine, run:
 
 ```bash
 chmod 400 your-key.pem
-ssh -i your-key.pem ubuntu@ec2-13-220-67-36.compute-1.amazonaws.com
+ssh -i your-key.pem ubuntu@instance-public-ip
 ```
 
 ---
@@ -121,16 +126,17 @@ sudo a2enmod rewrite
 # Restart Apache to apply changes
 sudo systemctl restart apache2
 ```
+<img width="1920" height="706" alt="Screenshot (835)" src="https://github.com/user-attachments/assets/1e0a2923-743a-4d91-9c1b-6695843f03c0" />
 
 ### 4.1 Configure Apache for PrestaShop
 
 Edit the default Apache site configuration:
 
 ```bash
-sudo nano /etc/apache2/sites-available/000-default.conf
+sudo nano /etc/apache2/apache2.conf
 ```
 
-Add the following block inside `<VirtualHost *:80>`:
+Add the following block inside:
 
 ```apache
 <Directory /var/www/html>
@@ -145,6 +151,8 @@ Save and restart Apache:
 sudo systemctl restart apache2
 ```
 
+<img width="1144" height="965" alt="Screenshot (838)" src="https://github.com/user-attachments/assets/888f2f89-ae8b-44fc-8e24-c41d0fb542ed" />
+
 ---
 
 ## Step 5: Download and Install PrestaShop
@@ -154,13 +162,13 @@ sudo systemctl restart apache2
 cd /tmp
 
 # Download PrestaShop
-wget https://github.com/PrestaShop/PrestaShop/releases/download/8.1.7/prestashop_8.1.7.zip
+wget https://github.com/PrestaShop/PrestaShop/releases/download/8.1.5/prestashop_8.1.5.zip
 
 # Install unzip utility
 sudo apt install unzip -y
 
 # Unzip the downloaded file
-unzip prestashop_8.1.7.zip
+unzip prestashop_8.1.5.zip
 
 # Unzip the inner PrestaShop archive to the web root
 sudo unzip prestashop.zip -d /var/www/html/
@@ -191,6 +199,8 @@ SHOW DATABASES;
 EXIT;
 ```
 
+<img width="1203" height="686" alt="Screenshot (841)" src="https://github.com/user-attachments/assets/16b0e6ce-97ec-4bc9-a738-70805db694d3" />
+
 ---
 
 ## Step 7: Run the PrestaShop Installation Wizard
@@ -200,6 +210,8 @@ Open a browser and navigate to:
 ```
 http://ec2-13-220-67-36.compute-1.amazonaws.com/
 ```
+
+<img width="1920" height="838" alt="Screenshot (837)" src="https://github.com/user-attachments/assets/5586a5bd-7543-4473-b1d5-06144530ea33" />
 
 The PrestaShop Installation Assistant will launch. Follow the steps:
 
@@ -256,9 +268,11 @@ sudo rm -rf /var/www/html/install
 | Resource | URL |
 |---|---|
 | 🛍️ Public Store | `http://ec2-13-220-67-36.compute-1.amazonaws.com/` |
-| ⚙️ Admin Back Office | `http://ec2-13-220-67-36.compute-1.amazonaws.com/admin633vjagodanyhbdkswi/` |
+| ⚙️ Admin Back Office | `http://ec2-13-220-67-36.compute-1.amazonaws.com/admin###################/` |
 
 Log into the admin panel using the email and password set during Step 7.4.
+
+<img width="1862" height="969" alt="Screenshot (843)" src="https://github.com/user-attachments/assets/09d48f60-c605-48aa-9a21-6a7dacdb648b" />
 
 ---
 
